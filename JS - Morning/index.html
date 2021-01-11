@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Form Example</title>
+    <style>
+        *{
+            margin-left: 5px;
+        }
+        h2{
+            text-align: center;
+        }
+    </style>
+
+    <script src='./form.js'></script>
+</head>
+<body>
+    <h2>Javascript Assignment 5 - Form Manipulation</h2>
+    <form name="myForm" method="POST" onsubmit="validateForm(event)">  
+        <label for="fname">First name:</label><br>
+        <input type="text" id="fname" name="fname"><br><br>
+        
+        <label for="lname">Last name:</label><br>
+        <input type="text" id="lname" name="lname"><br><br>
+
+        <lable for="email">Email Id:</lable><br>
+        <input type="text" id="email" name="email"><br><br>
+        
+        <lable for="gender">Gender:</lable><br>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label>
+
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label><br><br>
+
+        <lable for="office">Office:</lable><br>
+        <select name="location">
+            <option value="Mumbai">Mumbai</option>
+            <option value="Banglore">Banglore</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Delhi">Delhi</option>
+        </select><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
