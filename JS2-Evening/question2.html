@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 2</title>
+
+    <style>
+        input[type=text],
+        input[type=number],
+        input[type=email],
+        select {
+            width: 40%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        form {
+            width: 60%;
+            float: left;
+        }
+        output{
+            width: 30%;
+            float: right;
+        }
+        output > p
+        {
+            margin-left: 2%;
+        } 
+
+        button {
+            width: 20%;
+            background-color: blue;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+    <script src="./question2.js"></script>
+</head>
+
+<body>
+    <h1 align="center">Javascript 2 - Question 2</h1>
+    <p>
+        Create an HTML Form with different kind of controls.<br>
+        Submit button should validate all the controls.<br>
+        - Input fields should be required<br>
+
+
+        Create an object of student with firstname, lastname, age , gender, rollno and dob.Add a field occupation to the
+        object with an input value from user.<br>
+        Create a Get Button which when clicked with an input of roll no. shows the student details.
+    </p>
+    <form name="myForm">
+        <fieldset>
+            <legend>Student Form</legend>
+            <label for="firstName">First name:</label><br>
+            <input type="text" id="firstName" name="firstName" placeholder="Enter First Name"><br>
+
+            <label for="lastName">Last name:</label><br>
+            <input type="text" id="lastName" name="lastName" placeholder="Enter Last Name"><br>
+
+            <label for="age">Age :</label><br>
+            <input type="number" id="age" name="age" placeholder="Enter Age "><br>
+
+            <label for="gender">Gender : </label><br><br>
+            <label for="male">Male</label>
+            <input type="radio" id="male" name="gender" value="male"><br>
+            <label for="female">Female</label>
+            <input type="radio" id="female" name="gender" value="female"><br>
+            <br>
+
+            <label for="rollNo">Roll No:</label><br>
+            <input type="number" id="rollNo" name="rollNo" placeholder="Enter Roll no"><br>
+
+            <label for="email">Email :</label><br>
+            <input type="text" id="email" name="email" placeholder="Enter Email Id"><br>
+
+            <label for="brach">Choose your stream:</label>
+            <select id="brach">
+                <option value="Computer Science">Computer Science</option>
+                <option value="Information TechnologyIt">Information Technology</option>
+                <option value="Electronics and Telecommunincation">Electronics and Telecommunincation</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Civil">Civil </option>
+                <option value="Mechanical">Mechanical </option>
+            </select>
+            <br>
+            <button type="button" onclick="Submit(event)">Submit & Validate</button>
+
+            <br>
+            <label for="roll_No" id="roll_no_lbl" style="display: none;">Roll No:</label><br>
+            <input type="number" id="roll_No_inp" name="roll_No" placeholder="Enter Roll no" style="display: none;"><br>
+            <label for="occupationlbl" id="occupationlbl" style="display: none;">Occupation : </label>
+            <input type="text" placeholder="Enter Occupation also" id="occupationinp" style="display: none;"><br>
+            <button type="button" id="occupationbtn" onclick="addOccupation(event)" style="display: none;">Add
+                Occupation</button>
+        </fieldset>
+    </form>
+
+    <div class="ouput">
+        <p id="printDetails">
+            These are your details: <br>
+            firstName : <span id="fnameOutput"></span> <br>
+            lastName : <span id="lnameOutput"></span> <br>
+            age : <span id="ageOutput"></span> <br>
+            email : <span id="emailOutput"></span> <br>
+            gender : <span id="genderOutput"></span> <br>
+            rollNo : <span id="rollOutput"></span> <br>
+            stream : <span id="branchOutput"></span> <br>
+        </p>
+        <p id="occshw" style="display: none;">
+            occupation : <span id="occupationOutput"></span> <br>
+        </p>
+    </div>
+</body>
+
+</html>

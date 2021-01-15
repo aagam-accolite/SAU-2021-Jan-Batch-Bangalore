@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question 1</title>
+    <style>
+        *{
+            background-color: lightblue;
+        }
+        input[type=text]
+        {
+            width: 40%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 20%;
+            background-color:blue;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        form{
+            width: 50%;
+        }
+        form > fieldset > input{
+            background-color: white;
+            width: 50%;
+        }
+    </style>
+    <script src='./question1.js'></script>
+</head>
+
+<body>
+    <h1 align="center">JavaScript - 2 {Question 1}</h1>
+    <p>
+        <h4>Question</h4>
+        Write a JavaScript program along with UI which accept a string as input and then does the following.<br>
+          1. Calculates the length of the string and displays on UI - <br>
+	      2. Converts the string to uppercase and lowercase respectively & displays on UI <br>
+	      3. Separates the vowels and consonants – displays on UI	<br>
+   	      4. Gives an error if any number is present in the string.<br>
+    </p>
+    <form name="myForm" method="POST" onsubmit="callForm(event)" >
+        <fieldset>
+            <legend>Output</legend>
+        <label>Input : </label> <input type="text" name="inputfield" id="inputfield" placeholder="Enter Input Text">
+        <br>
+        <input type="submit" value="Submit">
+
+        <h3>Length of String  <span id="lengthStr"></span></h3>
+        <h3>String Uppercase  <span id="Strupr"></span></h3>
+        <h3>String Lowercase <span id="Strlcr"></span></h3>
+        <h3>String Vovels and Consonants <span id="seperateAlphabets"></span></h3>
+        <h3>Number Error <span id="isNumberPresent"></span></h3>
+        </fieldset>
+    </form>
+</body>
+
+</html>
