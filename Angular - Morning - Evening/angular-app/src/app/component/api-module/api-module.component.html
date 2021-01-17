@@ -1,0 +1,23 @@
+<div>
+    <ng-container *ngIf="displayTodos ; else elseblock">
+        <ul>
+            <ng-container *ngFor="let todo of todos; let i = index">
+                <li *ngIf='i<20' (click)="getApiValue(todo.id)">
+                    {{todo.title}}
+                </li>
+            </ng-container>
+        </ul>
+    </ng-container>
+    <ng-container #elseblock>
+        <div id="showSelectedTodo" *ngFor="let todo of singleTodo">
+            <h3 align='center'>Selected Todo : {{todo.title}}</h3>
+            <p align='center'>
+            Todo UserId: {{todo.userId}} <br>
+            Todo Id : {{todo.id}}​<br>
+            Todo Title : {{todo.title}}<br>
+            Todo Status : {{todo.completed}}<br>
+            <button class='btn' (click)="setdisplayTodos()">Back</button>
+            </p>
+        </div>
+    </ng-container>
+</div>

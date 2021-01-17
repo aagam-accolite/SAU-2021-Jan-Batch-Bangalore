@@ -1,0 +1,32 @@
+<h3 align='center'>Display Session</h3>
+<ul>
+    <li *ngFor="let session of sessions" (click)="onSelect(session)">
+        <h3>Session Name : {{session.name}}</h3>
+        <ng-container *ngIf='session.isDisplay'> 
+            Session Trainer: {{session.trainer}} <br>
+            Session Date: {{session.date | date}} <br>
+            <button type="submit" [class]="session.date" (click)="editSession(session.date)">Edit Item</button><br>
+            <div style="display: none;" [id]="session.date">
+                <input type="text" placeholder="Session Name" [(ngModel)]="edited_session_name"><br><br>
+                <input type="text" placeholder="Trainer Name" [(ngModel)]="edited_trainer_name"><br><br>
+                <input type="date" placeholder="Date of Session" [(ngModel)]="edited_session_date"><br><br>
+                <button (click)="submitEditedDetails(session.date)">Submit Edited Details</button>
+                <button (click)="cancelSelection(session.date)">Cancel</button>
+            </div>
+            <br>
+            <button id="delete" class='delbtn' (click)="deleteSession(session.date)">Delete</button>
+        </ng-container>
+
+    </li>
+</ul>
+
+<br>
+<br>
+<div class='AddSession'>
+    <h3 align='center'> Add Session </h3>
+
+    Session Name<input type="text" placeholder="Session Name" [(ngModel)]="session_name"><br><br>
+    Session Trainer<input type="text" placeholder="Trainer Name" [(ngModel)]="trainer_name"><br><br>
+    Session Date<input type="date" placeholder="Date of Session" [(ngModel)]="session_date"><br><br>
+    <button type="submit" (click)="addSession()">Add Item</button>
+</div>
