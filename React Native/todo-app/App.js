@@ -2,20 +2,19 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from "@react-navigation/native";
-import Login from './screens/Login';
-import Add from './screens/Add';
-import ViewTodo from './screens/ViewTodo';
-
+import Login from './screen/Login';
+import ViewTodo from './screen/ViewTodo/ViewTodo';
+import Todo from './components/Todo';
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
-   <NavigationContainer>
+    <NavigationContainer>
       <Stack.Navigator>
       <Stack.Screen name="login" component={Login} options={{ title: "Login Page" }} />
-        <Stack.Screen name="view-notes" component={ViewTodo} options={{ title: "Notes made by you" }} />
-        <Stack.Screen name="add-notes" component={Add} options={{ title: "Add a new note" }} />
+       <Stack.Screen name="view-todo" component={ViewTodo} options={{ title: "View Todo" }} /><Stack.Screen name="add-todo" component={Todo} options={{ title: "Add a new note" }} />
       </Stack.Navigator>
     </NavigationContainer> 
   );
 }
+

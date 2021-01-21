@@ -1,25 +1,63 @@
-import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Image, ScrollView } from 'react-native';
+import React, { useState } from "react";
+import { Text, TextInput, View  ,AsyncStorage,StyleSheet,Button} from "react-native";
 
-const Todo = ({navigation}) => {
+
+const Todo = ({ navigation }) =>{
+    const [noteTitle, setNoteTitle] = useState("");
+    const [noteContent, setNoteContent] = useState("");
+
+    const submitNote = async () => {
+        var newNote = {
+            "title": noteTitle,
+            "content": noteContent,
+        }
+        console.log(newNote);
+        var notesList = await AsyncStorage.getItem("notesList");
+        console.log("notesList", JSON.parse(notesList))
+        notesList = JSON.parse(notesList);
+        if (notesList === null) {
+            notesList = [
+                {
+                    id: "1",
+                    note: newNote,
+                }
+            ]
+        } else {
+            let noteId = notesList.length + 1;
+            notesList.push(
+                {
+                    id: noteId,
+                    note: newNote,
+                }
+            )
+        }
+
+        console.log(notesList);
+        await AsyncStorage.setItem('notesList', JSON.stringify(notesList));
+        var noteListFetched = await AsyncStorage.getItem('notesList');
+        console.log("noteListFetched", JSON.parse(noteListFetched));
+        console.log("done")
+        navigation.goBack();
+    }
     return (
-        <View style={styles.container}>
+      <View style={styles.container}>
             <Text style={styles.mainText}>Add Todo</Text>
             <Text style={styles.labelText}>Todo Title</Text>
-            <TextInput style={styles.inputTit} placeholder='Enter Todo Title'></TextInput>
+            <TextInput style={styles.inputTit} placeholder='Enter Todo Title' onChangeText={setNoteTitle}></TextInput>
             <Text style={styles.labelText}>Todo Description</Text>
-            <TextInput multiline style={styles.inputDesc} placeholder='Enter Todo Description'></TextInput>
-           <Button title="Submit"></Button>
+            <TextInput multiline style={styles.inputDesc} placeholder='Enter Todo Description' onChangeText={setNoteContent}></TextInput>
+           <Button title="Submit" onPress={submitNote}></Button>
         </View>
     );
 }
+
 export default Todo;
+
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#1e90ff',
-        marginTop: 24,
+        backgroundColor: '#f59842',
     },
     mainText: {
         fontSize: 30,
@@ -51,20 +89,5 @@ const styles = StyleSheet.create({
         padding: 15,
         margin: 15,
         borderRadius:20
-    },
-    btnContainer:{
-        marginTop:15,
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    usrBtn: {
-        backgroundColor: '#FFD700',
-        padding: 20,
-        width: 170,
-        borderRadius: 30
-    },
-    btnTxt: {
-        fontSize: 16,
-        textAlign: 'center'
     },
 });
