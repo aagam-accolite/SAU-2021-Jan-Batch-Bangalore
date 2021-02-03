@@ -20,10 +20,4 @@ public class KafkaRunnerController {
 
         this.producer.sendMessage(message);
     }
-
-    @GetMapping("/demo")
-    public String test()
-    {
-        return "Status 200 :  Success";
-    }
 }
