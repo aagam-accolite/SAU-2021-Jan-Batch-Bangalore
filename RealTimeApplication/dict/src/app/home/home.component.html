@@ -1,0 +1,62 @@
+<section class="home-page">
+  <div class="home-page-container">
+    <div class="list-of-word">
+      <span class="word-heading">
+        <p>
+          <p align="center">Dictionary Application</p>
+          <br><br>
+          <button>
+          <a routerLink="/addWord" routerLinkActive="active">Add Word</a>
+        </button>
+        <p>
+      </span>
+
+
+      <form [formGroup]="form" (ngSubmit)="sort()">
+        <div class="form-group">
+          <label for="sortBy">Sort Method - </label>
+          <select (change)="sort()" formControlName="sortBy" class="form-control">
+            <option>Created Time : Ascending</option>
+            <option *ngFor="let option of optionsList">{{option}}</option>
+          </select>
+        </div>
+      </form>
+
+      <form [formGroup]="patternForm" (ngSubmit)="patternMatch()">
+        <div class="form-group">
+          <input formControlName="pattern" placeholder="Enter Pattern" />
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+        </form>
+      <button (click)="reset()">reset</button>
+      <br><br>
+      <div *ngIf="words.length == 0">
+        No words found
+      </div>
+      <ng-template ngFor let-item [ngForOf]="words">
+        <div class="word">
+          <div class="meaning">
+            {{item.id}}
+            Word: {{ item.word }} <br />
+            Part Of Speech: {{ item.partOfSpeech }}<br />
+            Meaning: {{ item.meaning }}<br />
+            Example Sentence: {{ item.example }}<br />
+            Created : {{item.creationTm}}<br />
+            last modified: {{item.lastModifiedTm}}
+          </div>
+          <div class="buttons">
+            <button (click)="edit(item)">
+              Edit
+            </button>
+            <button (click)="delete(item)">
+              Delete
+            </button>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+    <div class="edit-word" id="edit-word" style="display: none;">
+      <app-update [action]="'Update Word'" [editableData]="editableWord" (updateWord)="updateWord($event)"></app-update>
+    </div>
+  </div>
+</section>
